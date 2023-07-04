@@ -147,7 +147,7 @@ deploy: manifests kustomize ## Deploy controller to the K8s cluster specified in
 
 # 生成部署相关的文件
 .PHONY: deployfile
-makedeploy:  docker-build
+makedeploy:  docker-build docker-push
 
 	rm -rf deploy
 	
