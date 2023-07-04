@@ -1,0 +1,12 @@
+#后端Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: fileserver-backend-service
+spec:
+  ports:
+    - port: 16650
+      targetPort: 16650
+  selector:
+    app: fileserver-backend
+

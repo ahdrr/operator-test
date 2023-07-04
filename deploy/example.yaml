@@ -1,0 +1,30 @@
+apiVersion: mygroup.local.dev/v1alpha1
+kind: MyResource
+metadata:
+  name: myresource-sample
+spec:
+  # App Configurations
+  app:
+    image: nginx:1.7.9
+    ports:
+    - port: 80
+    size: 2
+
+  # Service Configurations
+  service:
+    type: NodePort
+    ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30002
+  
+  # Monitoring Configurations
+  monitoring:
+    enabled: true
+    image: prom/node-exporter:v1.1.2
+    exporterPort: 9000
+    service:
+      ports:
+      - port: 9000
+        targetPort: 9000
+        nodePort: 30003
