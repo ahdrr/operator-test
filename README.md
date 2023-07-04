@@ -1,8 +1,8 @@
 # myoperator
-// TODO(user): Add simple overview of use/purpose
+// 备份记录
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+// 备份记录
 
 ## Getting Started
 You’ll need a Kubernetes cluster to run against. You can use [KIND](https://sigs.k8s.io/kind) to get a local cluster for testing, or run against a remote cluster.

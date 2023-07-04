@@ -144,26 +144,24 @@ deploy: manifests kustomize ## Deploy controller to the K8s cluster specified in
 
 
 
+
 # 生成部署相关的文件
-.PHONY: makedeploy
+.PHONY: deployfile
 makedeploy:  docker-build
+
 	rm -rf deploy
 	
 	mkdir -p deploy
 
-	## 复制CRD和其他manifest到deploy目录
-
-	$(KUSTOMIZE) build config/crd > deploy/crd.yaml
-
-    # 生成rbac
-	$(KUSTOMIZE) build config/rbac > deploy/rbac.yaml
-
 	# 生成operator
 	cd config/manager && $(KUSTOMIZE) edit set image controller=${IMG}
-	$(KUSTOMIZE) build config/manager > deploy/operator.yaml
+	$(KUSTOMIZE) build config/default > deploy/operator.yaml
 
 	#生成example文件 
 	$(KUSTOMIZE) build config/samples > deploy/example.yaml
+
+
+
 
 .PHONY: undeploy
 undeploy: ## Undeploy controller from the K8s cluster specified in ~/.kube/config. Call with ignore-not-found=true to ignore resource not found errors during deletion.
